@@ -71,7 +71,8 @@ services:
     environment:
       - DATABASE_URL=postgresql://dba:dba@paybank-db:5432/UserDB    # URL de conexão com o banco de dados
       - REDIS_HOST=paybank-redis                             # Host do Redis
-      - REDIS_PORT=6379                                      # Porta do Redis
+      - REDIS_PORT=6379     
+      - VITE_API_URL=http://localhost:3333                                 # Porta do Redis
       - TZ=America/Sao_Paulo                                 # Fuso horário
     ports:
       - "3333:3333"                                           # Mapeamento da porta do serviço
@@ -89,9 +90,9 @@ services:
     environment:
       - REDIS_HOST=paybank-redis                             # Host do Redis
       - REDIS_PORT=6379                                      # Porta do Redis
-      - MAILTRAP_ACCOUNT_ID=3365587                          # ID da conta do Mailtrap
-      - MAILTRAP_TOKEN=8aa3830ddaeaadd601afe16cae5da073      # Token do Mailtrap
-      - MAILTRAP_INBOX_ID=3365587                            # ID da caixa de entrada do Mailtrap
+      - MAILTRAP_ACCOUNT_ID=3523901                          # ID da conta do Mailtrap
+      - MAILTRAP_TOKEN=c0ea6e9dc1e9c9a16a941fca1d0a5dc2      # Token do Mailtrap
+      - MAILTRAP_INBOX_ID=33523901                            # ID da caixa de entrada do Mailtrap
       - TZ=America/Sao_Paulo                                 # Fuso horário
     restart: unless-stopped
 
@@ -105,7 +106,7 @@ services:
     depends_on:
       - paybank-ms-auth         # Depende do serviço 'paybank-ms-auth'
     environment:
-      - TZ=America/Sao_Paulo     # Fuso horário
+      - TZ=America/Sao_Paulo    # Fuso horário
     ports:
       - "3000:3000"              # Mapeamento da porta do frontend
     restart: unless-stopped
